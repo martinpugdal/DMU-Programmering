@@ -1,3 +1,5 @@
+import helloworld.HelloWorld;
+
 public class Test {
 
     public static void main(String[] args) {
@@ -11,6 +13,7 @@ public class Test {
          */
         HelloWorld world2 = new HelloWorld("Martin");
         System.out.println(world2.toString());
-        world2.setName("En anden Martinn");
+        world2.setName("En anden Martin");
+        new gui.GUI(new String[]{"helloworld"}, world1);
     }
 }

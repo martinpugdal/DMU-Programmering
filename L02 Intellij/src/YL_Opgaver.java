@@ -1,9 +1,9 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class YL_Opgaver
-{
+public class YL_Opgaver {
+
+    private static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] arg) {
 //        exercise__2_6();
 //        exercise__2_7();
@@ -15,7 +15,6 @@ public class YL_Opgaver
 //        and 1000 and adds all the digits in the integer. For example, if an integer is 932, the sum of all its digits is 14.
 //        Hint: Use the % operator to extract digits, and use the / operator to remove the
 //        extracted digit. For instance, 932 % 10 = 2 and 932 / 10 = 93.
-        Scanner sc = new Scanner(System.in);
         System.out.print("Indtast et tal ind, hvor værdien er i mellem 0 og 1000: ");
         int num = sc.nextInt();
 
@@ -31,9 +30,8 @@ public class YL_Opgaver
 //        Find the number of years) Write a program that prompts the user to enter the minutes (e.g., 1 billion),
 //        and displays the maximum number of years and remaining days for the minutes.
 //        For simplicity, assume that a year has 365 days.
-        Scanner sc = new Scanner(System.in);
         System.out.print("Indtast et tal ind hvor det er i enheden minut: ");
-        Long minutes = sc.nextLong();
+        long minutes = sc.nextLong();
 
         int years = (int) (minutes / 525600);
         int days = (int) ((minutes % 525600) / 1440);
@@ -45,7 +43,6 @@ public class YL_Opgaver
 //    (Cost of driving) Write a program that prompts the user to enter the distance to
 //    drive, the fuel efficiency of the car in miles per gallon, and the price per gallon
 //    then displays the cost of the trip.
-        Scanner sc = new Scanner(System.in);
         System.out.print("Indtast køreafstand: ");
         double distance = sc.nextDouble();
         System.out.print("Indtast miles per. gallon: ");

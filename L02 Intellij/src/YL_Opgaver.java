@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class YL_Opgaver {
 
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] arg) {
 //        exercise__2_6();

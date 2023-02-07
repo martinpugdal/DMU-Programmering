@@ -1,3 +1,4 @@
+import helloworld.GUI;
 import helloworld.HelloWorld;
 
 public class Test {
@@ -14,6 +15,6 @@ public class Test {
         HelloWorld world2 = new HelloWorld("Martin");
         System.out.println(world2.toString());
         world2.setName("En anden Martin");
-        new gui.GUI(new String[]{"helloworld"}, world1);
+        new GUI(new String[]{"helloworld"}, world1);
     }
 }

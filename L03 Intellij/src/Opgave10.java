@@ -1,50 +1,68 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Opgave10 {
+
+    public enum Item {
+        SCISSOR("scissor", 0),
+        ROCK("rock", 1),
+        PAPER("paper", 2);
+
+        private final String name;
+        private final int value;
+
+        Item(String name, int value) {
+            this.name = name;
+            this.value = value;
+        }
+
+        private static final Map<String, Item> convertStringToEnum = Map.of(
+            "scissor", SCISSOR,
+            "rock", ROCK,
+            "paper", PAPER,
+            "0", SCISSOR,
+            "1", ROCK,
+            "2", PAPER,
+            "s", SCISSOR,
+            "r", ROCK,
+            "p", PAPER
+        );
+
+        public static Item fromString(String name) {
+            return convertStringToEnum.get(name);
+        }
+
+        private static final int[][] result = new int[][] {
+            {0, -1, 1},
+            {1, 0, -1},
+            {-1, 1, 0}
+        };
+
+        public static int getResult(Item item1, Item item2) {
+            return result[item1.value][item2.value];
+        }
+    }
+
+    private static final Map<Integer, String> resultMessages = Map.of(
+        -1, "lost",
+        0, "draw",
+        1, "won"
+    );
+
     public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("scissor (0), rock (1), paper (2): ");
-        /*debugging faster*/
-//        for (int i = 0; i < 10; i++) {
-//            int playerItem = new Random().nextInt(0, 3);
-//            int botItem = new Random().nextInt(0, 3);
-//            StringBuilder resultMessage = new StringBuilder();
-//            resultMessage.append("The computer is ").append(getItem(botItem)).append(". ");
-//            resultMessage.append("You are ").append(getItem(playerItem));
-//            resultMessage.append(((playerWon(getItem(playerItem),getItem(botItem))).equals("draw")) ? " too. It is a "+playerWon(getItem(playerItem),getItem(botItem)) : ". You "+playerWon(getItem(playerItem),getItem(botItem)));
-//            System.out.println(resultMessage);
-//        }
-        int playerItem = sc.nextInt();
-        int botItem = new Random().nextInt(0, 3);
-        StringBuilder resultMessage = new StringBuilder();
-        resultMessage.append("The computer is ").append(getItem(botItem)).append(". ");
-        resultMessage.append("You are ").append(getItem(playerItem));
-        resultMessage.append(((playerWon(getItem(playerItem),getItem(botItem))).equals("draw")) ? " too. It is a "+playerWon(getItem(playerItem),getItem(botItem)) : ". You "+playerWon(getItem(playerItem),getItem(botItem)));
-        System.out.println(resultMessage);
+        System.out.print("scissor (0), rock (1) or paper (2): ");
+        String playerItem_ = sc.next();
+        Item playerItem = Item.fromString(playerItem_);
+        Item botItem = Item.values()[new Random().nextInt(3)];
+        System.out.println(getResultMessage(playerItem, botItem));
     }
 
-    private static String getItem(int item) {
-        ArrayList<String> items = new ArrayList<>(Arrays.asList("scissor", "rock", "paper"));
-        return items.get((item));
-    }
-
-    private static String playerWon(String playerItem, String botItem) {
-        if (playerItem.equals("scissor") && botItem.equals("rock")) {
-            return "lost";
-        } else if (playerItem.equals("scissor") && botItem.equals("paper")) {
-            return "won";
-        } else if (playerItem.equals("rock") && botItem.equals("scissor")) {
-            return "won";
-        } else if (playerItem.equals("rock") && botItem.equals("paper")) {
-            return "lost";
-        } else if (playerItem.equals("paper") && botItem.equals("scissor")) {
-            return "lost";
-        } else if (playerItem.equals("paper") && botItem.equals("rock")) {
-            return "won";
-        }
-        return "draw";
+    private static String getResultMessage(Item playerItem, Item botItem) {
+        int outcome = Item.getResult(playerItem, botItem);
+        return "The computer is " + botItem.name + ". " +
+            "You are " + playerItem.name +
+            ". You " + resultMessages.get(outcome);
     }
 }

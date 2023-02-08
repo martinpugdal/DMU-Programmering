@@ -4,24 +4,27 @@ public class YL_Opgaver {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] arg) {
+    public static void main(String[] arg) throws Exception {
 //        exercise__2_6();
 //        exercise__2_7();
         exercise__2_23();
     }
 
-    private static void exercise__2_6() {
+    private static void exercise__2_6() throws Exception {
 //        (Sum the digits in an integer) Write a program that reads an integer between 0
 //        and 1000 and adds all the digits in the integer. For example, if an integer is 932, the sum of all its digits is 14.
 //        Hint: Use the % operator to extract digits, and use the / operator to remove the
 //        extracted digit. For instance, 932 % 10 = 2 and 932 / 10 = 93.
         System.out.print("Indtast et tal ind, hvor værdien er i mellem 0 og 1000: ");
-        int num = sc.nextInt();
+        int inputNum = sc.nextInt();
+        if (inputNum > 1000 || inputNum < 0) {
+            throw new Exception("Skriv et tal mellem 0 og 1000..");
+        }
 
         int sum = 0;
-        while (num > 0) {
-            sum += num % 10;
-            num /= 10;
+        while (inputNum > 0) {
+            sum += inputNum % 10;
+            inputNum /= 10;
         }
         System.out.println("Summen af alle digits er: " + sum);
     }
@@ -31,25 +34,33 @@ public class YL_Opgaver {
 //        and displays the maximum number of years and remaining days for the minutes.
 //        For simplicity, assume that a year has 365 days.
         System.out.print("Indtast et tal ind hvor det er i enheden minut: ");
-        long minutes = sc.nextLong();
+        long inputMinutes = sc.nextLong();
+        int days = (int) inputMinutes/60/24;
+        int years = days/365;
+        System.out.println(inputMinutes + " minutes er omtrent " + years + " år og " + days + " dage.");
+    }
 
-        int years = (int) (minutes / 525600);
-        int days = (int) ((minutes % 525600) / 1440);
-
-        System.out.println(minutes + " minutes er omtrent " + years + " år og " + days + " dage.");
+    private static double getDoubleByString(String value) {
+        double doubleVal;
+        try {
+            doubleVal = Double.parseDouble(value);
+        } catch (Exception e) {
+            doubleVal = Double.parseDouble(value.replace(",", "."));
+        }
+        return doubleVal;
     }
 
     private static void exercise__2_23() {
 //    (Cost of driving) Write a program that prompts the user to enter the distance to
-//    drive, the fuel efficiency of the car in miles per gallon, and the price per gallon
+//    drive, the fuel efficiency of the car in km per L, and the price per L
 //    then displays the cost of the trip.
         System.out.print("Indtast køreafstand: ");
-        double distance = sc.nextDouble();
-        System.out.print("Indtast miles per. gallon: ");
-        double mpg = sc.nextDouble();
-        System.out.print("Indtast prisen per gallon: ");
-        double ppg = sc.nextDouble();
-        double cost = (distance / mpg) * ppg;
-        System.out.println("omkostningerne ved kørsel er $" + cost);
+        double inputDistance = getDoubleByString(sc.next());
+        System.out.print("Indtast miles per. liter: ");
+        double inputKmPerL = getDoubleByString(sc.next());
+        System.out.print("Indtast prisen per liter: ");
+        double inputPricePerL = getDoubleByString(sc.next());
+        double cost = (inputDistance / inputKmPerL) * inputPricePerL;
+        System.out.println("omkostningerne ved kørsel er " + cost + ",-");
     }
 }

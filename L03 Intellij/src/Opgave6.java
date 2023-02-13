@@ -9,14 +9,17 @@ public class Opgave6 {
     }
 
     private static String sign(int i) {
-        String result = "";
+//        String result = "";
         if (i > 0) {
-            result = "positiv";
+//            result = "positiv";
+            return "positiv";
         } else if (i < 0) {
-            result = "negativ";
+//            result = "negativ";
+            return "negativ";
         } else {
-            result = "nul";
+//            result = "nul";
+            return "nul";
         }
-        return result;
+//        return result;
     }
 }

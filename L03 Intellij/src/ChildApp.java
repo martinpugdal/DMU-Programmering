@@ -12,15 +12,14 @@ public class ChildApp {
 
    // Metoden skal returenre en tekststreng der beskriver hvilken institution et barn skal gå i, afhængig af barnets alder.
    // Reglerne for dette kan ses på opgavedsedlen
-   //
     public static String institution(int age) {
         if (age == 0) {
             return "Home";
-        } else if (age <= 2 && age >= 1) {
+        } else if (age < 3) {
             return "Nursery";
-        } else if (age <= 5 && age >= 3) {
+        } else if (age < 6) {
             return "Kindergarten";
-        } else if (age <= 16 && age >= 6) {
+        } else if (age < 16) {
             return "School";
         } else {
             return "Out of school";
@@ -29,7 +28,6 @@ public class ChildApp {
 
     // Metoden skal returenre en tekststreng der beskriver hvilket gymnastikhold et barn skal gå på, afhængig af barnets alder og køn.
     // Reglerne for dette kan ses på opgavedsedlen
-    //
     public static String team(boolean isBoy, int age) {
         if (isBoy) {
             if (age < 8) {

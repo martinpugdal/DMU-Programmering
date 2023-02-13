@@ -14,14 +14,17 @@ public class Opgave7 {
     }
 
     private static String inorder(int... args) {
-        String result;
+//        String result;
         if (args[0] < args[1] && args[1] < args[2]) {
-            result = "voksende";
+//            result = "voksende";
+            return "voksende";
         } else if (args[0] > args[1] && args[1] > args[2]) {
-            result = "aftagende";
+//            result = "aftagende";
+            return "aftagende";
         } else {
-            result = "hverken eller";
+//            result = "hverken eller";
+            return "hverken eller";
         }
-        return result;
+//        return result;
     }
 }

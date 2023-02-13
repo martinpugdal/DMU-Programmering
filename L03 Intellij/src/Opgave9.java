@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Opgave9 {
+
     public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter today’s day: ");

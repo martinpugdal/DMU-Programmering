@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Opgave7 {
+
     public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Indtast et tal (1): ");
@@ -13,7 +14,7 @@ public class Opgave7 {
     }
 
     private static String inorder(int... args) {
-        String result = "";
+        String result;
         if (args[0] < args[1] && args[1] < args[2]) {
             result = "voksende";
         } else if (args[0] > args[1] && args[1] > args[2]) {

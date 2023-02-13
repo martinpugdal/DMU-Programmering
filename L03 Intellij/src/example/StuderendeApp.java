@@ -1,3 +1,5 @@
+package example;
+
 import java.util.Scanner;
 public  class StuderendeApp {
     public static String arbejde(int alder) {

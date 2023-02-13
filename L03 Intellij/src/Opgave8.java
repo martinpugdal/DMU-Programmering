@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 public class Opgave8 {
+
     public static void main(String [] args) {
         System.out.println(getSeason(1,12));
         System.out.println(getSeason(2,31));

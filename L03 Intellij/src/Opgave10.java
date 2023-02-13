@@ -10,6 +10,16 @@ import java.util.Scanner;
  * Resultatet af spillet vises som en besked på skærmen.
  */
 public class Opgave10 {
+
+    public static void main(String [] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("scissor (0), rock (1) or paper (2): ");
+        String playerItem_ = sc.next();
+        Item playerItem = Item.fromString(playerItem_);
+        Item botItem = Item.values()[new Random().nextInt(3)];
+        System.out.println(getResultMessage(playerItem, botItem));
+    }
+
     /**
      * Enum Item: Repræsenterer de tre elementer i spillet: scissor, rock, paper.
      */
@@ -73,11 +83,7 @@ public class Opgave10 {
             return convertStringToEnum.get(name);
         }
 
-        private static final int[][] result = new int[][] {
-            {0, -1, 1},
-            {1, 0, -1},
-            {-1, 1, 0}
-        };
+        private static final int[][] result = new int[][] {{0, -1, 1}, {1, 0, -1}, {-1, 1, 0}};
 
         /**
          * Returnerer resultatet af en kamp mellem to items
@@ -88,22 +94,10 @@ public class Opgave10 {
          */
         public static int getResult(Item item1, Item item2) {
             return result[item1.value][item2.value];
-        }    }
-
-    private static final Map<Integer, String> resultMessages = Map.of(
-        -1, "lost",
-        0, "draw",
-        1, "won"
-    );
-
-    public static void main(String [] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("scissor (0), rock (1) or paper (2): ");
-        String playerItem_ = sc.next();
-        Item playerItem = Item.fromString(playerItem_);
-        Item botItem = Item.values()[new Random().nextInt(3)];
-        System.out.println(getResultMessage(playerItem, botItem));
+        }
     }
+
+    private static final Map<Integer, String> resultMessages = Map.of(-1, "lost",0, "draw", 1, "won");
 
     /**
      * Returnerer en meddelelse, der angiver resultatet af spillet baseret på sammenligningen mellem spillerens og bottens bevægelser.

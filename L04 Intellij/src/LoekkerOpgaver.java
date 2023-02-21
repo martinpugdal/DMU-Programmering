@@ -18,7 +18,7 @@ public class LoekkerOpgaver {
 //        System.out.println(sumOddDigits(32677));
 
 //        Kald af metoder der afprøver opgave 3
-//        reverse(3456);
+        reverse(3456);
 
 //        Scanner sc = new Scanner(System.in);
 //        System.out.print("The amount invested: ");
@@ -39,12 +39,8 @@ public class LoekkerOpgaver {
 //        int salesMinAmount = sc_.nextInt();
 //        System.out.print("Sales Amount max: ");
 //        int salesMaxAmount = sc_.nextInt();
-        System.out.println("Sales Amount\tCommission");
-        int sales = 10000;
-        while (sales <= 100000) {
-            System.out.println(sales + "\t\t" + computeCommission(sales));
-            sales += 5000;
-        }
+//
+
     }
 
     // Metoden returnerer summen af alle lige tal mellem 2 og n
@@ -106,12 +102,13 @@ public class LoekkerOpgaver {
     }
 
     public static void reverse(int number) {
-        StringBuilder result = new StringBuilder();
+        int reverse = 0;
         while (number != 0) {
-            result.append(number % 10);
+            int remainder = number % 10;
+            reverse = reverse * 10 + remainder;
             number = number/10;
         }
-        System.out.println(result);
+        System.out.println(reverse);
     }
 
     public static double futureInvestmentValue(double investmentAmount, double monthlyInterestRate, int years) {

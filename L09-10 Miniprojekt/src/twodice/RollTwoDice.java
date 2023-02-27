@@ -1,7 +1,5 @@
 package twodice;
 
-import jdk.jfr.Frequency;
-
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -36,7 +34,7 @@ public class RollTwoDice {
         System.out.print("Roll? ('no' stops) ");
         String answer = scanner.nextLine();
         while (!answer.equals("no")) {
-            int[] faces = rollDie();
+            int[] faces = rollDice();
             System.out.println("Eyes: " + Arrays.toString(faces));
             System.out.println();
 
@@ -50,7 +48,7 @@ public class RollTwoDice {
         scanner.close();
     }
 
-    private static int[] rollDie() {
+    private static int[] rollDice() {
         Random random = new Random();
         return new int[]{random.nextInt(0,6)+1, random.nextInt(0,6)+1};
     }

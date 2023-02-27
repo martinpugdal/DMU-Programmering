@@ -32,7 +32,7 @@ public class Craps {
         System.out.print("Roll? ('no' stops) ");
         String answer = scanner.nextLine();
         while (!answer.equals("no")) {
-            int[] faces = rollDie();
+            int[] faces = rollDice();
             System.out.println("Eyes: " + Arrays.toString(faces));
             System.out.println();
             int facesSum = faces[0] + faces[1];
@@ -64,7 +64,7 @@ public class Craps {
         System.out.print("Roll again? ");
         scanner.nextLine();
         while (facesSum != 7) {
-            faces = rollDie();
+            faces = rollDice();
             System.out.println("Eyes: " + Arrays.toString(faces));
             System.out.println();
             facesSum = faces[0] + faces[1];
@@ -78,7 +78,7 @@ public class Craps {
         return false;
     }
 
-    private static int[] rollDie() {
+    private static int[] rollDice() {
         Random random = new Random();
         return new int[]{random.nextInt(0,6)+1, random.nextInt(0,6)+1};
     }

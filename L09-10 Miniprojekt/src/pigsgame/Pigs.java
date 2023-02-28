@@ -26,13 +26,15 @@ public class Pigs {
     public static void choiceYourWinningPoint() {
         System.out.print("How many points for win this game? ");
         int maxPoints = scanner.nextInt();
+        scanner.nextLine();
         pointsToWin = (maxPoints > 0) ? maxPoints : 100;
     }
 
     public static void playPigs() {
         choiceYourWinningPoint();
+        System.out.println();
         System.out.print("Start your game? (Press enter) ");
-        String ab = scanner.nextLine();
+        scanner.nextLine();
         boolean whosTurn = true;
         boolean winnerFound = false;
         while (!winnerFound) {
@@ -51,7 +53,6 @@ public class Pigs {
             }
             whosTurn = !whosTurn;
         }
-        System.out.println();
     }
 
     private static void printRules() {
@@ -85,14 +86,14 @@ public class Pigs {
                 System.out.printf("Aw shit we got 1, %s lost the points for this round!%n%n", name);
                 return 0;
             } else if (points + pointsForThisRound >= pointsToWin) {
+                System.out.printf("%s rolled %d", name, eyes);
                 return points + pointsForThisRound;
             }
-            System.out.println(name+" rolled " + eyes);
-            System.out.println();
-            System.out.println("Want to roll again or skip?");
+            System.out.printf("%s rolled %d%n%n", name, eyes);
+            System.out.print("Want to roll again or skip?");
             answer = scanner.nextLine();
         }
-        System.out.println(name + " ended their turn with " + points + " points.");
+        System.out.printf("%s ended their turn with %d points.%n", name, points);
         return pointsForThisRound;
     }
 }

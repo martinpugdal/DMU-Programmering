@@ -42,13 +42,13 @@ public class Pigs {
                 player1Points += rollforPoint("Martin", player1Points);
                 if (player1Points >= pointsToWin) {
                     System.out.printf("%s just won this game with %d points!", "Martin", player1Points);
-                    winnerFound = !winnerFound;
+                    winnerFound = true;
                 }
             } else {
                 player2Points += rollforPoint("Sebastian", player2Points);
                 if (player2Points >= pointsToWin) {
                     System.out.printf("%s just won this game with %d points!", "Sebastian", player2Points);
-                    winnerFound = !winnerFound;
+                    winnerFound = true;
                 }
             }
             whosTurn = !whosTurn;

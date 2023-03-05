@@ -12,14 +12,14 @@ public class Pigs {
     private static int player2Points = 0;
 
     public static void main(String[] args) {
-        System.out.println("Welcome to the game of Pigs");
+        System.out.println("Welcome to the game of Submitted.Pigs");
         printRules();
         System.out.println();
 
         playPigs();
 
         System.out.println();
-        System.out.println("Thank you for playing Pigs");
+        System.out.println("Thank you for playing Submitted.Pigs");
     }
 
 
@@ -57,7 +57,7 @@ public class Pigs {
 
     private static void printRules() {
         System.out.println("=====================================================");
-        System.out.println("Rules of Pigs:");
+        System.out.println("Rules of Submitted.Pigs:");
         System.out.println("Første spiller kaster en terning, indtil han enten kaster 1, eller beslutter sig for at stoppe. Hvis han \n" +
                 "slår en 1’er, får han ingen point i denne runde. Hvis han beslutter sig for at stoppe, inden har slår \n" +
                 "en 1’er, lægges summen af alle hans kast i denne runde sammen med hans samlede antal point, \n" +

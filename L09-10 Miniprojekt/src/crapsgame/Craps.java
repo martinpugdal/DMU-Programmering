@@ -11,19 +11,19 @@ public class Craps {
     private static int WonGames = 0;
 
     public static void main(String[] args) {
-        System.out.println("Welcome to the game of Craps");
+        System.out.println("Welcome to the game of Submitted.Craps");
         printRules();
         System.out.println();
 
         playCraps();
 
         System.out.println();
-        System.out.println("Thank you for playing Craps");
+        System.out.println("Thank you for playing Submitted.Craps");
     }
 
     private static void printRules() {
         System.out.println("=====================================================");
-        System.out.println("Rules of Craps:");
+        System.out.println("Rules of Submitted.Craps:");
         System.out.println("The first throw is called 'come out roll'. The player wins immediately if the first throw is 7 or 11, and loses immediately if the first throw is 2, 3 or 12. If the player's first throw is 4, 5, 6, 8, 9 or 10, this number is established as the player's 'points'. The player then keeps going throw until he either throws his 'point' again or throws 7. If he throws 7, he has lost. Does he throw his 'point', he has won.");
         System.out.println("=====================================================");
     }

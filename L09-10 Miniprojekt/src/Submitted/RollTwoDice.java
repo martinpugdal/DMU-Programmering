@@ -1,31 +1,34 @@
-package twodice;
+package Submitted;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
+/**
+ * @author Loshan Sundaramoorthy, Sebastian Tully Schmidt, Martin Pugdal Pedersen
+ * @version 1.0
+ */
 public class RollTwoDice {
-    private static int rollCount = 0;
-    private static int eyesSum = 0;
-    private static int totalPairs = 0;
-    private static int highestEyes = 0;
-    private static final int[] frequentFaces = new int[6];
+
+    public static int rollCount;
+    public static int eyesSum;
+    public static int totalPair;
+    public static int highestEyes;
+    public static final int[] countFaces = new int[6];
 
     public static void main(String[] args) {
-        System.out.println("Welcome to the game of Submitted.RollTwoDice");
+        System.out.println("Welcome to the game of RollTwoDice");
         printRules();
         System.out.println();
 
         playTwoDice();
 
         System.out.println();
-        System.out.println("Thank you for playing RollOneDie");
+        System.out.println("Thank you for playing RollTwoDice");
     }
 
     private static void printRules() {
         System.out.println("=====================================================");
-        System.out.println("Rules of RollOneDie:");
-        System.out.println("The player throws one die as long as he/she wants.");
+        System.out.println("Rules of Submitted.RollTwoDice:");
+        System.out.println("The player throws two dice as long as he/she wants.");
         System.out.println("=====================================================");
     }
 
@@ -49,22 +52,24 @@ public class RollTwoDice {
     }
 
     private static int[] rollDice() {
+        int[] dice = new int[2];
         Random random = new Random();
-        return new int[]{random.nextInt(0,6)+1, random.nextInt(0,6)+1};
+        for (int i = 0; i < dice.length; i++) {
+            dice[i] = random.nextInt(6) + 1;
+        }
+        return dice;
     }
 
     private static void updateStatistics(int[] faces) {
         rollCount++;
         int facesSum = faces[0] + faces[1];
         eyesSum += facesSum;
-        if (faces[0] == faces[1]) {
-            totalPairs++;
-        }
-        if (facesSum > highestEyes) {
+        if (faces[0] == faces[1])
+            totalPair++;
+        if (facesSum > highestEyes)
             highestEyes = facesSum;
-        }
         for (int face : faces) {
-            frequentFaces[face-1]++;
+            countFaces[face - 1] += 1;
         }
     }
 
@@ -72,11 +77,12 @@ public class RollTwoDice {
         System.out.println("\nResults:");
         System.out.println("-------");
         System.out.printf("%17s %4d\n", "Roll count:", rollCount);
-        System.out.printf("%17s %4d\n", "Eyes sum:", eyesSum);
-        System.out.printf("%17s %4d\n", "Total pairs:", totalPairs);
+        System.out.printf("%17s %4d\n", "Sum of eyes:", eyesSum);
+        System.out.printf("%17s %4d\n", "Total pairs:", totalPair);
         System.out.printf("%17s %4d\n", "Highest eyes:", highestEyes);
         for (int i = 0; i < 6; i++) {
-            System.out.printf("%17s %4d\n", (i+1 == 1) ? i+1+" eye:" : i+1+" eyes:", frequentFaces[i]);
+            System.out.printf("%17s %4d\n", i + 1 + " Dice:", countFaces[i]);
         }
     }
 }
+

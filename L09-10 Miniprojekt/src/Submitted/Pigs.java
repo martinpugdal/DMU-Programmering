@@ -89,7 +89,7 @@ public class Pigs {
 
     private static int[] rollDice() {
         Random random = new Random();
-        return new int[]{random.nextInt(0,6)+1, random.nextInt(0,6)+1};
+        return new int[]{random.nextInt(6)+1, random.nextInt(6)+1};
     }
 
     private static int rollForPoint(String name, int points) {

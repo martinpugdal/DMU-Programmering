@@ -102,7 +102,8 @@ public class Pigs {
         int pointsForThisRound = 0;
         int[] eyes;
         int eyesSum = 0;
-        while (!answer.equals("skip")) {
+        int returnPoints = -1;
+        while (!answer.equals("skip") || returnPoints != -1) {
             rollsTotal++;
             eyes = rollDice();
             eyesSum = eyes[0] + eyes[1];
@@ -110,20 +111,21 @@ public class Pigs {
             if (eyes[0] == 1 && eyes[1] == 1) {
                 updateStatistics(name.equals(player1Name), rollsTotal);
                 System.out.printf("Aw shit we got 1 and 1, %s lost all points!%n%n", name);
-                return 0;
+                returnPoints = 0;
             } else if (eyes[0] == 1 || eyes[1] == 1) {
                 updateStatistics(name.equals(player1Name), rollsTotal);
                 System.out.printf("Aw shit we got 1, %s lost the points for this round!%n%n", name);
-                return points;
+                returnPoints = points;
             } else if (points + pointsForThisRound >= pointsToWin) {
                 updateStatistics(name.equals(player1Name), rollsTotal);
                 System.out.printf("%s rolled %d (total: %d)%n%n", name, eyesSum, points + pointsForThisRound);
-                return points + pointsForThisRound;
+                returnPoints = points + pointsForThisRound;
             } else {
                 System.out.printf("%s rolled %d (total: %d)%n%n", name, eyesSum, points + pointsForThisRound);
                 System.out.print("Want to roll again or skip? ");
                 answer = scanner.nextLine();
             }
+            return returnPoints;
         }
         updateStatistics(name.equals(player1Name), rollsTotal);
         System.out.printf("%s ended their turn with %d points for this round, and now have %d %n%n", name, pointsForThisRound, points + pointsForThisRound);

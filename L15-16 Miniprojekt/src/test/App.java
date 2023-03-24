@@ -1,17 +1,17 @@
 package test;
 
-import models.Student;
-import models.Team;
+import model.Student;
+import model.Team;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+/**
+ * @author Martin Pugdal Pedersen
+ * @version 1.0
+ */
 public class App {
 
     public static void main(String[] args) {
-        Team team1 = new Team("23V", "23.3");
-        Team team2 = new Team("23U", "23.2");
+        Team team1 = new Team("23V", "A1.32");
+        Team team2 = new Team("22V", "B1.13");
 
         Student student1 = new Student("Martin", true, new int[]{3,4,5});
         Student student2 = new Student("Thor", false, new int[]{12,4,7});
@@ -112,12 +112,12 @@ public class App {
         System.out.println();
 
 
-        System.out.println(team1+" har svaret følgende totalt:");
+        System.out.println(team1+" har svaret følgende korrekt:");
         for (int i = 0; i < team1.getCorrectAnswers().length; i++) {
             System.out.printf("%s: %s%n", team1.getCorrectAnswers()[i], team1.getCorrectAnswersOverall()[i]);
         }
         System.out.println();
-        System.out.println(team2+" har svaret følgende totalt:");
+        System.out.println(team2+" har svaret følgende korrekt:");
         for (int i = 0; i < team2.getCorrectAnswers().length; i++) {
             System.out.printf("%s: %s%n", team2.getCorrectAnswers()[i], team2.getCorrectAnswersOverall()[i]);
         }

@@ -1,13 +1,17 @@
-package models;
+package model;
 
 import java.util.Random;
 
+/**
+ * @author Martin Pugdal Pedersen
+ * @version 1.0
+ */
 public class Student {
 
     private String name;
     private boolean active;
     private int[] grades;
-    private final char[] answers;
+    private char[] answers;
 
     public Student(String name, boolean active, int[] grades) {
         this.name = name;
@@ -40,6 +44,15 @@ public class Student {
         this.grades = grades;
     }
 
+    public char[] getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(char[] answers) {
+        this.answers = answers;
+    }
+
+
     public int getHighestGrade() {
         int highestGrade = -1;
         for (int grade : getGrades()) {
@@ -59,11 +72,7 @@ public class Student {
     }
 
     public void registerAnswerOnMultipleChoice(int questionNumber, char answer) {
-        this.answers[questionNumber-1] = answer;
-    }
-
-    public char[] getAnswers() {
-        return answers;
+        getAnswers()[questionNumber-1] = answer;
     }
 
     public char randomAnswer() {
@@ -75,7 +84,7 @@ public class Student {
     public int correctAnswers(char[] correct) {
         int correctAnswers = 0;
         for (int i = 0; i < correct.length; i++) {
-            if (answers[i] == correct[i]) {
+            if (getAnswers()[i] == correct[i]) {
                 correctAnswers++;
             }
         }
@@ -83,6 +92,6 @@ public class Student {
     }
 
     public String toString() {
-        return this.name;
+        return getName();
     }
 }

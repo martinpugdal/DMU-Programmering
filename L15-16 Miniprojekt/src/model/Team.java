@@ -1,12 +1,15 @@
-package models;
+package model;
 
+/**
+ * @author Martin Pugdal Pedersen
+ * @version 1.0
+ */
 public class Team {
 
-    private final String name;
-    private final String room;
+    private String name;
+    private String room;
     private final Student[] students;
     private int studentsAmount;
-
     private final char[] correctAnswers;
 
     public Team(String name, String room) {
@@ -33,27 +36,54 @@ public class Team {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getRoom() {
         return room;
     }
 
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public Student[] getRawStudents() {
+        return this.students;
+    }
+
     public Student[] getStudents() {
-        Student[] students = new Student[this.studentsAmount];
+        Student[] students = new Student[getStudentsAmount()];
         int n = 0;
-        while (this.students[n] != null) {
-            students[n] = this.students[n];
+        while (getRawStudents()[n] != null) {
+            students[n] = getRawStudents()[n];
             n++;
         }
         return students;
     }
 
+    public int getStudentsAmount() {
+        return this.studentsAmount;
+    }
+
+    public void setStudentsAmount(int studentsAmount) {
+        this.studentsAmount = studentsAmount;
+    }
+
     public void addStudent(Student student) {
-        for (int i = 0; i < this.students.length; i++) {
-            if (this.students[i] == null) {
-                this.students[i] = student;
-                this.studentsAmount += 1;
-                return;
+        boolean found = false;
+        int i = 0;
+        while (!found) {
+            if (i > getRawStudents().length) {
+                found = !found;
+                System.out.println("Sorry, we can't add this student, because we have reached max students in this team.");
             }
+            if (getRawStudents()[i] == null) {
+                getRawStudents()[i] = student;
+                setStudentsAmount(getStudentsAmount()+1);
+                found = !found;
+            }
+            i++;
         }
     }
 
@@ -62,19 +92,15 @@ public class Team {
         int i = -1;
         while (foundIndex == -1) {
             i++;
-            if (name.equals(this.students[i].getName())) {
-                this.studentsAmount -= 1;
+            if (name.equals(getRawStudents()[i].getName())) {
+                setStudentsAmount(getStudentsAmount()-1);
                 foundIndex = i;
             }
         }
-        for (int j = foundIndex; j < this.studentsAmount; j++) {
-            this.students[j] = this.students[j+1];
-            this.students[j+1] = null;
+        for (int j = foundIndex; j < getStudentsAmount(); j++) {
+            getRawStudents()[j] = getRawStudents()[j+1];
+            getRawStudents()[j+1] = null;
         }
-    }
-
-    public int getStudentsAmount() {
-        return this.studentsAmount;
     }
 
     public double getAverageOfAllStudentsGrades() {
@@ -91,7 +117,7 @@ public class Team {
 
     public Student[] highScoreStudents(double minAverage) {
         int i = 0;
-        Student[] activeStudents = new Student[this.studentsAmount];
+        Student[] activeStudents = new Student[getStudentsAmount()];
         for (Student student : getStudents()) {
             if (student.isActive()) {
                 if (student.getAverageGrade() >= minAverage) {
@@ -116,9 +142,9 @@ public class Team {
     }
 
     public String[] getStudentsInfo() {
-        String[] studentsInfo = new String[this.studentsAmount];
-        for (int i = 0; i < this.studentsAmount; i++) {
-            studentsInfo[i] = String.format("%4s %8s %4s", this.students[i], String.format("%.2f", this.students[i].getAverageGrade()), this.students[i].correctAnswers(this.correctAnswers));
+        String[] studentsInfo = new String[getStudentsAmount()];
+        for (int i = 0; i < getStudentsAmount(); i++) {
+            studentsInfo[i] = String.format("%4s %8s %4s", getRawStudents()[i], String.format("%.2f", getRawStudents()[i].getAverageGrade()), getRawStudents()[i].correctAnswers(this.correctAnswers));
         }
         return studentsInfo;
     }
@@ -126,8 +152,8 @@ public class Team {
     public int[] getCorrectAnswersOverall() {
         int[] correctResultOverall = new int[10];
         for (Student student : getStudents()) {
-            for (int i = 0; i < correctAnswers.length; i++) {
-                if (correctAnswers[i] == student.getAnswers()[i]) {
+            for (int i = 0; i < getCorrectAnswers().length; i++) {
+                if (getCorrectAnswers()[i] == student.getAnswers()[i]) {
                     correctResultOverall[i]++;
                 }
             }
@@ -136,6 +162,6 @@ public class Team {
     }
 
     public String toString() {
-        return this.name;
+        return getName();
     }
 }

@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class GUI extends Application {
 
-    private HelloWorld world;
+    private final HelloWorld world;
 
     public GUI(String[] args, HelloWorld world) {
         this.world = world;

@@ -141,13 +141,13 @@ public class MenuApp {
     }
 
     private static void getStudentInfo(Student student) {
-        System.out.printf("Grades: ");
+        System.out.print("Grades: ");
         for (int grade : student.getGrades()) {
             System.out.print(grade + " ");
         }
         System.out.printf("Highest grade: %s%n", student.getHighestGrade());
         System.out.printf("Average grade: %.2f%n", student.getAverageGrade());
-        System.out.printf("Answers to the test: ");
+        System.out.print("Answers to the test: ");
         for (char answer : student.getAnswers()) {
             System.out.print(answer + " ");
         }

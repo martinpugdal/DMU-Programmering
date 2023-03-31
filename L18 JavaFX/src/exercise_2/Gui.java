@@ -44,12 +44,10 @@ public class Gui extends Application {
 
         Button btnInc = new Button("Inc");
         pane.add(btnInc, 2, 0);
-//        GridPane.setMargin(btnInc, new Insets(10, 10, 0, 10));
         btnInc.setOnAction(event -> this.increaseNumber());
 
         Button btnDec = new Button("Dec");
         pane.add(btnDec, 2, 1);
-//        GridPane.setMargin(btnDec, new Insets(10, 10, 0, 10));
 
         btnDec.setOnAction(event -> this.decreaseNumber());
 

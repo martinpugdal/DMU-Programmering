@@ -21,26 +21,26 @@ public class Team {
     }
 
     public void addPlayer(Player player) {
-        players.add(player);
+        getPlayers().add(player);
     }
 
     public void printPlayers() {
-        for (Player p : players) {
+        for (Player p : getPlayers()) {
             System.out.println(p);
         }
     }
 
     public double calcAverageAge() {
         int sum = 0;
-        for (Player p : players) {
+        for (Player p : getPlayers()) {
             sum += p.getAge();
         }
-        return (double) sum / players.size();
+        return (double) sum / getPlayers().size();
     }
 
     public int calcTotalScore() {
         int sum = 0;
-        for (Player p : players) {
+        for (Player p : getPlayers()) {
             sum += p.getScore();
         }
         return sum;
@@ -48,7 +48,7 @@ public class Team {
 
     public int calcOldPlayersScore(int ageLimit) {
         int sum = 0;
-        for (Player p : players) {
+        for (Player p : getPlayers()) {
             if (p.getAge() >= ageLimit) {
                 sum += p.getScore();
             }

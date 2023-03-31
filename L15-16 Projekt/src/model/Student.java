@@ -17,7 +17,7 @@ public class Student {
         this.name = name;
         this.active = active;
         this.grades = grades;
-        this.answers = new char[10];
+        generateAnswers();
     }
 
     public String getName() {
@@ -71,15 +71,25 @@ public class Student {
         return (double) sumGrade/getGrades().length;
     }
 
-    public void registerAnswerOnMultipleChoice(int questionNumber, char answer) {
-        getAnswers()[questionNumber-1] = answer;
+    public void generateAnswers() {
+        Random r = new Random();
+        setAnswers(new char[10]);
+        for (int i = 0; i < getAnswers().length; i++){
+            int tal = r.nextInt(4);
+            tal = 65 + tal;
+            getAnswers()[i] = (char)tal;
+        }
     }
 
-    public char randomAnswer() {
-        Random random = new Random();
-        int answerIndex = random.nextInt(4);
-        return (new char[]{'A', 'B', 'C', 'D'})[answerIndex];
-    }
+//    public void registerAnswerOnMultipleChoice(int questionNumber, char answer) {
+//        getAnswers()[questionNumber-1] = answer;
+//    }
+//
+//    public char randomAnswer() {
+//        Random random = new Random();
+//        int answerIndex = random.nextInt(4);
+//        return (new char[]{'A', 'B', 'C', 'D'})[answerIndex];
+//    }
 
     public int correctAnswers(char[] correct) {
         int correctAnswers = 0;

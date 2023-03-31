@@ -70,20 +70,14 @@ public class Team {
         this.studentsAmount = studentsAmount;
     }
 
+
     public void addStudent(Student student) {
-        boolean found = false;
-        int i = 0;
-        while (!found) {
-            if (i > getRawStudents().length) {
-                found = !found;
-                System.out.println("Sorry, we can't add this student, because we have reached max students in this team.");
-            }
-            if (getRawStudents()[i] == null) {
-                getRawStudents()[i] = student;
-                setStudentsAmount(getStudentsAmount()+1);
-                found = !found;
-            }
-            i++;
+        if(getStudentsAmount() < getRawStudents().length) {
+            getRawStudents()[studentsAmount] = student;
+            setStudentsAmount(getStudentsAmount()+1);
+        }
+        else{
+            System.out.println("Sorry, we can't add this student, because we have reached max students in this team.");
         }
     }
 

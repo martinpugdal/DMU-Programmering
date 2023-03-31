@@ -82,13 +82,13 @@ public class App {
         System.out.println();
 
 
-        for (int i = 1; i <= 10; i++) {
-            student1.registerAnswerOnMultipleChoice(i, student1.randomAnswer());
-            student3.registerAnswerOnMultipleChoice(i, student3.randomAnswer());
-
-            student5.registerAnswerOnMultipleChoice(i, student5.randomAnswer());
-            student6.registerAnswerOnMultipleChoice(i, student6.randomAnswer());
-        }
+//        for (int i = 1; i <= 10; i++) {
+//            student1.registerAnswerOnMultipleChoice(i, student1.randomAnswer());
+//            student3.registerAnswerOnMultipleChoice(i, student3.randomAnswer());
+//
+//            student5.registerAnswerOnMultipleChoice(i, student5.randomAnswer());
+//            student6.registerAnswerOnMultipleChoice(i, student6.randomAnswer());
+//        }
 
         getTeamAnswers(team1); //Fyldte for meget, så lavede en ny metode til det her.
         System.out.println();

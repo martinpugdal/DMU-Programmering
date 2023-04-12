@@ -1,6 +1,7 @@
 package exercise_3;
 
 import javafx.application.Application;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,13 +23,16 @@ public class Gui extends Application {
         stage.show();
     }
 
-    private TextField txfFirstName;
-    private TextField txfLastName;
-    private TextField txfFullName;
+    private TextField txfInvestment;
+    private TextField txfYear;
+    private TextField txfInterest;
+    private TextField txtFutureValue;
 
     private void initContent(GridPane pane) {
         // show or hide grid lines
-        pane.setGridLinesVisible(true);
+//        pane.setGridLinesVisible(true);
+
+
 
         // set padding of the pane
         pane.setPadding(new Insets(20));
@@ -37,35 +41,44 @@ public class Gui extends Application {
         // set vertical gap between components
         pane.setVgap(10);
 
-        Label lblFirstName = new Label("First name:");
-        pane.add(lblFirstName, 0, 0);
+        Label lblInvestment = new Label("Investment:");
+        pane.add(lblInvestment, 0, 0);
 
-         txfFirstName = new TextField();
-        pane.add(txfFirstName, 0, 1, 1, 1);
+        txfInvestment = new TextField();
+        pane.add(txfInvestment, 1, 0);
 
+        Label lblYear = new Label("Years:");
+        pane.add(lblYear, 0, 1);
 
-        Label lblLastName = new Label("Last name:");
-        pane.add(lblLastName, 1, 0);
+        txfYear = new TextField();
+        pane.add(txfYear, 1, 1);
 
-        txfLastName = new TextField();
-        pane.add(txfLastName, 1, 1, 1, 1);
+        Label lblInterest = new Label("Interest (%):");
+        pane.add(lblInterest, 0, 2);
 
-        Label lblFullName = new Label("Full name:");
-        pane.add(lblFullName, 0, 2);
+        txfInterest = new TextField();
+        pane.add(txfInterest, 1, 2);
 
-        txfFullName = new TextField();
-        pane.add(txfFullName, 0, 3, 2, 1);
+        Button btnCalc = new Button("Caclulate");
+        pane.add(btnCalc, 1, 3);
+        GridPane.setHalignment(btnCalc, HPos.CENTER);
+        btnCalc.setOnAction(event -> this.calculateInvestment());
 
-        Button btnCombine = new Button("Combine");
-        pane.add(btnCombine, 1, 4);
-        GridPane.setMargin(btnCombine, new Insets(10, 10, 0, 10));
+        Label lblFutureValue = new Label("Future value:");
+        pane.add(lblFutureValue, 0, 4);
 
-        btnCombine.setOnAction(event -> this.combineAction());
+        txtFutureValue = new TextField();
+        pane.add(txtFutureValue, 1, 4);
+        txtFutureValue.setEditable(false);
 
     }
 
-    private void combineAction() {
-        String name = txfFirstName.getText().trim() + " " + txfLastName.getText().trim();
-        txfFullName.setText(name);
+    private void calculateInvestment() {
+        double investment = Double.parseDouble(txfInvestment.getText().trim());
+        int year = Integer.parseInt(txfYear.getText().trim());
+        double interest = Double.parseDouble(txfInterest.getText().trim());
+        double futureValue = investment * Math.pow(1 + interest / 100, year);
+        txtFutureValue.setText(String.valueOf(futureValue));
     }
+
 }

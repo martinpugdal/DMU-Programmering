@@ -50,6 +50,7 @@ public class Gui extends Application {
         lvwPersons.setPrefWidth(200);
         lvwPersons.setPrefHeight(200);
         lvwPersons.getItems().setAll(persons);
+        GridPane.setValignment(lblPersons, VPos.TOP);
 
 
         pane.add(lblName, 0, 0);
@@ -65,12 +66,9 @@ public class Gui extends Application {
 
         pane.add(lvwPersons, 1, 3);
 
-        GridPane.setValignment(lblPersons, VPos.TOP);
 
         btnAddPerson.setOnAction(event -> addPerson());
     }
-
-    // -------------------------------------------------------------------------
 
     private void addPerson() {
         persons.add(new Person(txfName.getText(), txtTitle.getText(), checkBoxSenior.isSelected()));

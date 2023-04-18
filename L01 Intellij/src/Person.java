@@ -1,7 +1,7 @@
 class Person {
 
-    private String sex;
-    private Integer age;
+    private final String sex;
+    private final Integer age;
 
     public Person(String sex, Integer age) {
         this.sex = sex;

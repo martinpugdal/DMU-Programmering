@@ -1,7 +1,7 @@
 import lombok.Getter;
 
 public class Kunde implements Comparable<Kunde> {
-
+//public class Kunde {
     @Getter
     private final String navn;
 
@@ -16,7 +16,7 @@ public class Kunde implements Comparable<Kunde> {
     }
 
 
-    @Override
+    @Override // its need only to Opgave8.
     public int compareTo(Kunde o) {
         if (o == null) {
             return 1;

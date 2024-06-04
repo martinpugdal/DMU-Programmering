@@ -149,7 +149,7 @@ public class HashSetChaining {
 	 */
 	public void rehash() {
 		Node[] old = buckets;
-		buckets = new Node[2 * old.length + 1];
+		buckets = new Node[2 * old.length + 1]; // new size is next prime number
         for (Node node : old) {
             Node current = node;
             while (current != null) {
